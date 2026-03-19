@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chuteiras de Futebol - Ginga7</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="logo.png" alt="Ginga7" class="logo-img">
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="camisas.html">Camisas</a></li>
+                    <li><a href="chuteiras.html" class="active">Chuteiras</a></li>
+                    <li><a href="capinhas.html">Capinhas</a></li>
+                    <li><a href="index.html#contato">Contato</a></li>
+                </ul>
+            </nav>
+            <div class="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1><i class="fas fa-shoe-prints"></i> Chuteiras de Futebol</h1>
+            <p>As melhores chuteiras profissionais para todos os tamanhos</p>
+        </div>
+    </section>
+
+    <!-- Size Filter -->
+    <section class="size-filter">
+        <div class="container">
+            <h3>Filtrar por Tamanho:</h3>
+            <div class="size-filter-buttons">
+                <button class="size-filter-btn active" data-size="all">Todos</button>
+                <button class="size-filter-btn" data-size="20-25">20-25</button>
+                <button class="size-filter-btn" data-size="26-30">26-30</button>
+                <button class="size-filter-btn" data-size="31-35">31-35</button>
+                <button class="size-filter-btn" data-size="36-40">36-40</button>
+                <button class="size-filter-btn" data-size="41-45">41-45</button>
+                <button class="size-filter-btn" data-size="46-50">46-50</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section">
+        <div class="container">
+            <h2 class="section-title">Todas as Chuteiras</h2>
+            <div class="products-grid">
+                <div class="product-card" data-sizes="36-50">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/300x300/000000/FFFFFF?text=Nike+Mercurial" alt="Nike Mercurial">
+                        <div class="product-overlay">
+                            <button class="btn-add-cart" data-product="Nike Mercurial Superfly" data-price="899.90">
+                                <i class="fas fa-cart-plus"></i> Adicionar ao Carrinho
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Nike Mercurial Superfly</h3>
+                        <p class="product-price">R$ 899,90</p>
+                        <div class="product-sizes">
+                            <span>Números:</span>
+                            <button class="size-btn">36</button>
+                            <button class="size-btn">37</button>
+                            <button class="size-btn">38</button>
+                            <button class="size-btn">39</button>
+                            <button class="size-btn">40</button>
+                            <button class="size-btn">41</button>
+                            <button class="size-btn">42</button>
+                            <button class="size-btn">43</button>
+                            <button class="size-btn">44</button>
+                            <button class="size-btn">45</button>
+                            <button class="size-btn">46</button>
+                            <button class="size-btn">47</button>
+                            <button class="size-btn">48</button>
+                            <button class="size-btn">49</button>
+                            <button class="size-btn">50</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-sizes="36-50">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/300x300/FF0000/FFFFFF?text=Adidas+Predator" alt="Adidas Predator">
+                        <div class="product-overlay">
+                            <button class="btn-add-cart" data-product="Adidas Predator Edge" data-price="799.90">
+                                <i class="fas fa-cart-plus"></i> Adicionar ao Carrinho
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Adidas Predator Edge</h3>
+                        <p class="product-price">R$ 799,90</p>
+                        <div class="product-sizes">
+                            <span>Números:</span>
+                            <button class="size-btn">36</button>
+                            <button class="size-btn">37</button>
+                            <button class="size-btn">38</button>
+                            <button class="size-btn">39</button>
+                            <button class="size-btn">40</button>
+                            <button class="size-btn">41</button>
+                            <button class="size-btn">42</button>
+                            <button class="size-btn">43</button>
+                            <button class="size-btn">44</button>
+                            <button class="size-btn">45</button>
+                            <button class="size-btn">46</button>
+                            <button class="size-btn">47</button>
+                            <button class="size-btn">48</button>
+                            <button class="size-btn">49</button>
+                            <button class="size-btn">50</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-sizes="36-50">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/300x300/00FF00/000000?text=Puma+Future" alt="Puma Future">
+                        <div class="product-overlay">
+                            <button class="btn-add-cart" data-product="Puma Future Z" data-price="699.90">
+                                <i class="fas fa-cart-plus"></i> Adicionar ao Carrinho
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Puma Future Z</h3>
+                        <p class="product-price">R$ 699,90</p>
+                        <div class="product-sizes">
+                            <span>Números:</span>
+                            <button class="size-btn">36</button>
+                            <button class="size-btn">37</button>
+                            <button class="size-btn">38</button>
+                            <button class="size-btn">39</button>
+                            <button class="size-btn">40</button>
+                            <button class="size-btn">41</button>
+                            <button class="size-btn">42</button>
+                            <button class="size-btn">43</button>
+                            <button class="size-btn">44</button>
+                            <button class="size-btn">45</button>
+                            <button class="size-btn">46</button>
+                            <button class="size-btn">47</button>
+                            <button class="size-btn">48</button>
+                            <button class="size-btn">49</button>
+                            <button class="size-btn">50</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-sizes="36-50">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/300x300/FFD700/000000?text=Mizuno+Morelia" alt="Mizuno Morelia">
+                        <div class="product-overlay">
+                            <button class="btn-add-cart" data-product="Mizuno Morelia Neo" data-price="599.90">
+                                <i class="fas fa-cart-plus"></i> Adicionar ao Carrinho
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Mizuno Morelia Neo</h3>
+                        <p class="product-price">R$ 599,90</p>
+                        <div class="product-sizes">
+                            <span>Números:</span>
+                            <button class="size-btn">36</button>
+                            <button class="size-btn">37</button>
+                            <button class="size-btn">38</button>
+                            <button class="size-btn">39</button>
+                            <button class="size-btn">40</button>
+                            <button class="size-btn">41</button>
+                            <button class="size-btn">42</button>
+                            <button class="size-btn">43</button>
+                            <button class="size-btn">44</button>
+                            <button class="size-btn">45</button>
+                            <button class="size-btn">46</button>
+                            <button class="size-btn">47</button>
+                            <button class="size-btn">48</button>
+                            <button class="size-btn">49</button>
+                            <button class="size-btn">50</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-sizes="20-35">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/300x300/0000FF/FFFFFF?text=Nike+Mercurial+Jr" alt="Nike Mercurial Junior">
+                        <div class="product-overlay">
+                            <button class="btn-add-cart" data-product="Nike Mercurial Junior" data-price="299.90">
+                                <i class="fas fa-cart-plus"></i> Adicionar ao Carrinho
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Nike Mercurial Junior</h3>
+                        <p class="product-price">R$ 299,90</p>
+                        <div class="product-sizes">
+                            <span>Números:</span>
+                            <button class="size-btn">20</button>
+                            <button class="size-btn">21</button>
+                            <button class="size-btn">22</button>
+                            <button class="size-btn">23</button>
+                            <button class="size-btn">24</button>
+                            <button class="size-btn">25</button>
+                            <button class="size-btn">26</button>
+                            <button class="size-btn">27</button>
+                            <button class="size-btn">28</button>
+                            <button class="size-btn">29</button>
+                            <button class="size-btn">30</button>
+                            <button class="size-btn">31</button>
+                            <button class="size-btn">32</button>
+                            <button class="size-btn">33</button>
+                            <button class="size-btn">34</button>
+                            <button class="size-btn">35</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-sizes="20-35">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/300x300/FF0000/FFFFFF?text=Adidas+Predator+Jr" alt="Adidas Predator Junior">
+                        <div class="product-overlay">
+                            <button class="btn-add-cart" data-product="Adidas Predator Junior" data-price="279.90">
+                                <i class="fas fa-cart-plus"></i> Adicionar ao Carrinho
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Adidas Predator Junior</h3>
+                        <p class="product-price">R$ 279,90</p>
+                        <div class="product-sizes">
+                            <span>Números:</span>
+                            <button class="size-btn">20</button>
+                            <button class="size-btn">21</button>
+                            <button class="size-btn">22</button>
+                            <button class="size-btn">23</button>
+                            <button class="size-btn">24</button>
+                            <button class="size-btn">25</button>
+                            <button class="size-btn">26</button>
+                            <button class="size-btn">27</button>
+                            <button class="size-btn">28</button>
+                            <button class="size-btn">29</button>
+                            <button class="size-btn">30</button>
+                            <button class="size-btn">31</button>
+                            <button class="size-btn">32</button>
+                            <button class="size-btn">33</button>
+                            <button class="size-btn">34</button>
+                            <button class="size-btn">35</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-sizes="20-35">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/300x300/00FF00/000000?text=Puma+Future+Jr" alt="Puma Future Junior">
+                        <div class="product-overlay">
+                            <button class="btn-add-cart" data-product="Puma Future Junior" data-price="259.90">
+                                <i class="fas fa-cart-plus"></i> Adicionar ao Carrinho
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Puma Future Junior</h3>
+                        <p class="product-price">R$ 259,90</p>
+                        <div class="product-sizes">
+                            <span>Números:</span>
+                            <button class="size-btn">20</button>
+                            <button class="size-btn">21</button>
+                            <button class="size-btn">22</button>
+                            <button class="size-btn">23</button>
+                            <button class="size-btn">24</button>
+                            <button class="size-btn">25</button>
+                            <button class="size-btn">26</button>
+                            <button class="size-btn">27</button>
+                            <button class="size-btn">28</button>
+                            <button class="size-btn">29</button>
+                            <button class="size-btn">30</button>
+                            <button class="size-btn">31</button>
+                            <button class="size-btn">32</button>
+                            <button class="size-btn">33</button>
+                            <button class="size-btn">34</button>
+                            <button class="size-btn">35</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-sizes="36-50">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/300x300/FF1493/FFFFFF?text=Nike+Tiempo" alt="Nike Tiempo">
+                        <div class="product-overlay">
+                            <button class="btn-add-cart" data-product="Nike Tiempo Legend" data-price="749.90">
+                                <i class="fas fa-cart-plus"></i> Adicionar ao Carrinho
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Nike Tiempo Legend</h3>
+                        <p class="product-price">R$ 749,90</p>
+                        <div class="product-sizes">
+                            <span>Números:</span>
+                            <button class="size-btn">36</button>
+                            <button class="size-btn">37</button>
+                            <button class="size-btn">38</button>
+                            <button class="size-btn">39</button>
+                            <button class="size-btn">40</button>
+                            <button class="size-btn">41</button>
+                            <button class="size-btn">42</button>
+                            <button class="size-btn">43</button>
+                            <button class="size-btn">44</button>
+                            <button class="size-btn">45</button>
+                            <button class="size-btn">46</button>
+                            <button class="size-btn">47</button>
+                            <button class="size-btn">48</button>
+                            <button class="size-btn">49</button>
+                            <button class="size-btn">50</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-sizes="36-50">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/300x300/800080/FFFFFF?text=Adidas+Copa" alt="Adidas Copa">
+                        <div class="product-overlay">
+                            <button class="btn-add-cart" data-product="Adidas Copa Mundial" data-price="699.90">
+                                <i class="fas fa-cart-plus"></i> Adicionar ao Carrinho
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Adidas Copa Mundial</h3>
+                        <p class="product-price">R$ 699,90</p>
+                        <div class="product-sizes">
+                            <span>Números:</span>
+                            <button class="size-btn">36</button>
+                            <button class="size-btn">37</button>
+                            <button class="size-btn">38</button>
+                            <button class="size-btn">39</button>
+                            <button class="size-btn">40</button>
+                            <button class="size-btn">41</button>
+                            <button class="size-btn">42</button>
+                            <button class="size-btn">43</button>
+                            <button class="size-btn">44</button>
+                            <button class="size-btn">45</button>
+                            <button class="size-btn">46</button>
+                            <button class="size-btn">47</button>
+                            <button class="size-btn">48</button>
+                            <button class="size-btn">49</button>
+                            <button class="size-btn">50</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-sizes="36-50">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/300x300/FF4500/FFFFFF?text=Nike+Phantom" alt="Nike Phantom">
+                        <div class="product-overlay">
+                            <button class="btn-add-cart" data-product="Nike Phantom GX" data-price="849.90">
+                                <i class="fas fa-cart-plus"></i> Adicionar ao Carrinho
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Nike Phantom GX</h3>
+                        <p class="product-price">R$ 849,90</p>
+                        <div class="product-sizes">
+                            <span>Números:</span>
+                            <button class="size-btn">36</button>
+                            <button class="size-btn">37</button>
+                            <button class="size-btn">38</button>
+                            <button class="size-btn">39</button>
+                            <button class="size-btn">40</button>
+                            <button class="size-btn">41</button>
+                            <button class="size-btn">42</button>
+                            <button class="size-btn">43</button>
+                            <button class="size-btn">44</button>
+                            <button class="size-btn">45</button>
+                            <button class="size-btn">46</button>
+                            <button class="size-btn">47</button>
+                            <button class="size-btn">48</button>
+                            <button class="size-btn">49</button>
+                            <button class="size-btn">50</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-sizes="36-50">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/300x300/4B0082/FFFFFF?text=Adidas+X" alt="Adidas X">
+                        <div class="product-overlay">
+                            <button class="btn-add-cart" data-product="Adidas X Speedportal" data-price="779.90">
+                                <i class="fas fa-cart-plus"></i> Adicionar ao Carrinho
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Adidas X Speedportal</h3>
+                        <p class="product-price">R$ 779,90</p>
+                        <div class="product-sizes">
+                            <span>Números:</span>
+                            <button class="size-btn">36</button>
+                            <button class="size-btn">37</button>
+                            <button class="size-btn">38</button>
+                            <button class="size-btn">39</button>
+                            <button class="size-btn">40</button>
+                            <button class="size-btn">41</button>
+                            <button class="size-btn">42</button>
+                            <button class="size-btn">43</button>
+                            <button class="size-btn">44</button>
+                            <button class="size-btn">45</button>
+                            <button class="size-btn">46</button>
+                            <button class="size-btn">47</button>
+                            <button class="size-btn">48</button>
+                            <button class="size-btn">49</button>
+                            <button class="size-btn">50</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Seu Carrinho</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="cartItems"></div>
+                <div class="cart-total">
+                    <h3>Total: R$ <span id="cartTotal">0.00</span></h3>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-checkout">Fazer Pedido</button>
+                <button class="btn-clear-cart">Esvaziar Carrinho</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Ginga7</h3>
+                    <p>A sua loja especializada em produtos de futebol</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <p><i class="fas fa-phone"></i> (77) 98120-2155</p>
+                    <p><i class="fas fa-envelope"></i> contato@ginga7.com.br</p>
+                    <p><i class="fas fa-map-marker-alt"></i> São Paulo, SP</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Horário de Funcionamento</h3>
+                    <p>Segunda a Sexta: 9h às 18h</p>
+                    <p>Sábado: 9h às 13h</p>
+                    <p>Domingo: Fechado</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Ginga7. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="cart-modal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h3>Seu Carrinho</h3>
+                <span class="close-cart">&times;</span>
+            </div>
+            <div class="cart-body">
+                <div id="cartItems"></div>
+                <div class="cart-total">
+                    <h3>Total: R$ <span id="cartTotal">0.00</span></h3>
+                </div>
+                
+                <!-- Customer Information Form -->
+                <div class="customer-form" id="customerForm" style="display: none;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <h4>Dados para Entrega</h4>
+                        <button type="button" class="back-to-cart" onclick="cart.backToCart()" style="background: #6c757d; color: white; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer; font-size: 0.9rem;">
+                            <i class="fas fa-arrow-left"></i> Voltar ao Carrinho
+                        </button>
+                    </div>
+                    <form id="checkoutForm">
+                        <div class="form-row">
+                            <input type="text" id="customerName" placeholder="Nome Completo" required>
+                            <input type="tel" id="customerPhone" placeholder="WhatsApp (DDD) 99999-9999" required>
+                        </div>
+                        <div class="form-row">
+                            <input type="email" id="customerEmail" placeholder="E-mail" required>
+                            <input type="text" id="customerCPF" placeholder="CPF" required>
+                        </div>
+                        <textarea id="customerAddress" placeholder="Endereço Completo com CEP" rows="3" required></textarea>
+                        <textarea id="customerNotes" placeholder="Observações (opcional)" rows="2"></textarea>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-checkout" id="btnCheckout">Fazer Pedido</button>
+                <button class="btn-clear-cart">Esvaziar Carrinho</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

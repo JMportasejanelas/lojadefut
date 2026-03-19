@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo - Ginga7</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .admin-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .admin-header {
+            background: linear-gradient(135deg, #0d4f2c, #1a1a1a);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            border-left: 4px solid #0d4f2c;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #0d4f2c;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .orders-section {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #ecf0f1;
+        }
+        
+        .filter-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            border: 2px solid #ecf0f1;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .filter-btn.active {
+            background: #0d4f2c;
+            color: white;
+            border-color: #0d4f2c;
+        }
+        
+        .filter-btn:hover {
+            border-color: #0d4f2c;
+        }
+        
+        .orders-grid {
+            display: grid;
+            gap: 1rem;
+        }
+        
+        .order-card {
+            background: #f8f9fa;
+            border: 1px solid #ecf0f1;
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .order-card:hover {
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+        
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .order-id {
+            font-weight: 700;
+            color: #0d4f2c;
+            font-size: 1.1rem;
+        }
+        
+        .order-date {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .order-status {
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .status-pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .status-confirmed {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status-shipped {
+            background: #cce5ff;
+            color: #004085;
+        }
+        
+        .status-delivered {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+        
+        .customer-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .info-item i {
+            color: #0d4f2c;
+            width: 20px;
+        }
+        
+        .order-items {
+            background: white;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .item-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #f1f3f4;
+        }
+        
+        .item-row:last-child {
+            border-bottom: none;
+            font-weight: 700;
+            color: #0d4f2c;
+        }
+        
+        .order-actions {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .action-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        
+        .btn-confirm {
+            background: #27ae60;
+            color: white;
+        }
+        
+        .btn-confirm:hover {
+            background: #229954;
+        }
+        
+        .btn-ship {
+            background: #3498db;
+            color: white;
+        }
+        
+        .btn-ship:hover {
+            background: #2980b9;
+        }
+        
+        .btn-deliver {
+            background: #17a2b8;
+            color: white;
+        }
+        
+        .btn-deliver:hover {
+            background: #138496;
+        }
+        
+        .btn-delete {
+            background: #e74c3c;
+            color: white;
+        }
+        
+        .btn-delete:hover {
+            background: #c0392b;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: #666;
+        }
+        
+        .empty-state i {
+            font-size: 4rem;
+            color: #ddd;
+            margin-bottom: 1rem;
+        }
+        
+        .export-btn {
+            background: #f39c12;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .export-btn:hover {
+            background: #e67e22;
+        }
+        
+        .search-bar {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .search-input {
+            flex: 1;
+            padding: 0.8rem;
+            border: 2px solid #ecf0f1;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: #0d4f2c;
+        }
+        
+        @media (max-width: 768px) {
+            .customer-info {
+                grid-template-columns: 1fr;
+            }
+            
+            .order-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+            
+            .filter-buttons {
+                justify-content: center;
+            }
+            
+            .section-header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Admin Header -->
+        <div class="admin-header">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <h1><i class="fas fa-store"></i> Painel Administrativo Ginga7</h1>
+                    <p>Gerencie seus pedidos e clientes</p>
+                </div>
+                <button onclick="logout()" style="background: rgba(255,255,255,0.2); color: white; border: 2px solid white; padding: 0.8rem 1.5rem; border-radius: 8px; cursor: pointer; font-weight: 500; transition: all 0.3s ease;">
+                    <i class="fas fa-sign-out-alt"></i> Sair
+                </button>
+            </div>
+        </div>
+
+        <!-- Statistics -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" id="totalOrders">0</div>
+                <div class="stat-label">Total de Pedidos</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="pendingOrders">0</div>
+                <div class="stat-label">Pedidos Pendentes</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="totalRevenue">R$ 0</div>
+                <div class="stat-label">Faturamento Total</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="totalCustomers">0</div>
+                <div class="stat-label">Clientes Únicos</div>
+            </div>
+        </div>
+
+        <!-- Orders Section -->
+        <div class="orders-section">
+            <div class="section-header">
+                <h2><i class="fas fa-shopping-bag"></i> Pedidos</h2>
+                <div style="display: flex; gap: 1rem; align-items: center;">
+                    <button class="export-btn" onclick="exportOrders()">
+                        <i class="fas fa-download"></i> Exportar CSV
+                    </button>
+                </div>
+            </div>
+
+            <!-- Search and Filter -->
+            <div class="search-bar">
+                <input type="text" class="search-input" id="searchInput" placeholder="Buscar por nome, email ou pedido...">
+                <button class="filter-btn active" onclick="filterOrders('all')">Todos</button>
+                <button class="filter-btn" onclick="filterOrders('pending')">Pendentes</button>
+                <button class="filter-btn" onclick="filterOrders('confirmed')">Confirmados</button>
+                <button class="filter-btn" onclick="filterOrders('shipped')">Enviados</button>
+                <button class="filter-btn" onclick="filterOrders('delivered')">Entregues</button>
+            </div>
+
+            <!-- Orders Grid -->
+            <div class="orders-grid" id="ordersGrid">
+                <div class="empty-state">
+                    <i class="fas fa-inbox"></i>
+                    <h3>Nenhum pedido encontrado</h3>
+                    <p>Os pedidos dos clientes aparecerão aqui</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Check authentication
+        function checkAuth() {
+            const isLoggedIn = sessionStorage.getItem('ginga7_admin_logged_in');
+            if (isLoggedIn !== 'true') {
+                window.location.href = 'login-admin.html';
+                return false;
+            }
+            return true;
+        }
+
+        // Logout function
+        function logout() {
+            sessionStorage.removeItem('ginga7_admin_logged_in');
+            sessionStorage.removeItem('ginga7_admin_login_time');
+            window.location.href = 'login-admin.html';
+        }
+
+        // Admin functionality
+        let orders = [];
+        let currentFilter = 'all';
+
+        // Load orders from localStorage
+        function loadOrders() {
+            const stored = localStorage.getItem('ginga7_orders');
+            if (stored) {
+                orders = JSON.parse(stored);
+                renderOrders();
+                updateStats();
+            }
+        }
+
+        // Save orders to localStorage
+        function saveOrders() {
+            localStorage.setItem('ginga7_orders', JSON.stringify(orders));
+        }
+
+        // Render orders
+        function renderOrders() {
+            const grid = document.getElementById('ordersGrid');
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            
+            let filteredOrders = orders.filter(order => {
+                const matchesSearch = order.customer.name.toLowerCase().includes(searchTerm) ||
+                                    order.customer.email.toLowerCase().includes(searchTerm) ||
+                                    order.id.toString().includes(searchTerm);
+                
+                const matchesFilter = currentFilter === 'all' || order.status === currentFilter;
+                
+                return matchesSearch && matchesFilter;
+            });
+
+            if (filteredOrders.length === 0) {
+                grid.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-inbox"></i>
+                        <h3>Nenhum pedido encontrado</h3>
+                        <p>Tente ajustar os filtros ou aguarde novos pedidos</p>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = filteredOrders.map(order => `
+                <div class="order-card">
+                    <div class="order-header">
+                        <div>
+                            <div class="order-id">Pedido #${order.id}</div>
+                            <div class="order-date">${new Date(order.date).toLocaleString('pt-BR')}</div>
+                        </div>
+                        <div class="order-status status-${order.status}">
+                            ${getStatusText(order.status)}
+                        </div>
+                    </div>
+                    
+                    <div class="customer-info">
+                        <div class="info-item">
+                            <i class="fas fa-user"></i>
+                            <span>${order.customer.name}</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-phone"></i>
+                            <span>${order.customer.phone}</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>${order.customer.email}</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-id-card"></i>
+                            <span>CPF: ${order.customer.cpf}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item" style="margin-bottom: 1rem;">
+                        <i class="fas fa-home"></i>
+                        <span>${order.customer.address}</span>
+                    </div>
+                    
+                    ${order.customer.notes ? `
+                        <div class="info-item" style="margin-bottom: 1rem;">
+                            <i class="fas fa-sticky-note"></i>
+                            <span>${order.customer.notes}</span>
+                        </div>
+                    ` : ''}
+                    
+                    <div class="order-items">
+                        ${order.items.map(item => `
+                            <div class="item-row">
+                                <span>${item.quantity}x ${item.name} (${item.size})</span>
+                                <span>R$ ${(item.price * item.quantity).toFixed(2)}</span>
+                            </div>
+                        `).join('')}
+                        <div class="item-row">
+                            <span>Total:</span>
+                            <span>R$ ${order.total.toFixed(2)}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="order-actions">
+                        ${order.status === 'pending' ? `
+                            <button class="action-btn btn-confirm" onclick="updateOrderStatus(${order.id}, 'confirmed')">
+                                <i class="fas fa-check"></i> Confirmar
+                            </button>
+                        ` : ''}
+                        ${order.status === 'confirmed' ? `
+                            <button class="action-btn btn-ship" onclick="updateOrderStatus(${order.id}, 'shipped')">
+                                <i class="fas fa-truck"></i> Enviar
+                            </button>
+                        ` : ''}
+                        ${order.status === 'shipped' ? `
+                            <button class="action-btn btn-deliver" onclick="updateOrderStatus(${order.id}, 'delivered')">
+                                <i class="fas fa-check-circle"></i> Entregue
+                            </button>
+                        ` : ''}
+                        <button class="action-btn btn-delete" onclick="deleteOrder(${order.id})">
+                            <i class="fas fa-trash"></i> Excluir
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Get status text
+        function getStatusText(status) {
+            const statusMap = {
+                'pending': 'Pendente',
+                'confirmed': 'Confirmado',
+                'shipped': 'Enviado',
+                'delivered': 'Entregue'
+            };
+            return statusMap[status] || status;
+        }
+
+        // Update order status
+        function updateOrderStatus(orderId, newStatus) {
+            const order = orders.find(o => o.id === orderId);
+            if (order) {
+                order.status = newStatus;
+                order.statusHistory = order.statusHistory || [];
+                order.statusHistory.push({
+                    status: newStatus,
+                    date: new Date().toISOString()
+                });
+                saveOrders();
+                renderOrders();
+                updateStats();
+                
+                // Show notification
+                showNotification(`Pedido #${orderId} atualizado para ${getStatusText(newStatus)}`, 'success');
+            }
+        }
+
+        // Delete order
+        function deleteOrder(orderId) {
+            if (confirm(`Tem certeza que deseja excluir o pedido #${orderId}?`)) {
+                orders = orders.filter(o => o.id !== orderId);
+                saveOrders();
+                renderOrders();
+                updateStats();
+                showNotification(`Pedido #${orderId} excluído`, 'info');
+            }
+        }
+
+        // Filter orders
+        function filterOrders(filter) {
+            currentFilter = filter;
+            
+            // Update active button
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            renderOrders();
+        }
+
+        // Search orders
+        document.getElementById('searchInput').addEventListener('input', renderOrders);
+
+        // Update statistics
+        function updateStats() {
+            const totalOrders = orders.length;
+            const pendingOrders = orders.filter(o => o.status === 'pending').length;
+            const totalRevenue = orders.reduce((sum, order) => sum + order.total, 0);
+            const uniqueCustomers = new Set(orders.map(o => o.customer.email)).size;
+
+            document.getElementById('totalOrders').textContent = totalOrders;
+            document.getElementById('pendingOrders').textContent = pendingOrders;
+            document.getElementById('totalRevenue').textContent = `R$ ${totalRevenue.toFixed(2)}`;
+            document.getElementById('totalCustomers').textContent = uniqueCustomers;
+        }
+
+        // Export orders to CSV
+        function exportOrders() {
+            if (orders.length === 0) {
+                showNotification('Nenhum pedido para exportar', 'warning');
+                return;
+            }
+
+            let csv = 'ID Pedido,Data,Status,Cliente,Email,Telefone,CPF,Endereço,Produtos,Total\n';
+            
+            orders.forEach(order => {
+                const products = order.items.map(item => 
+                    `${item.quantity}x ${item.name} (${item.size})`
+                ).join(';');
+                
+                csv += `${order.id},"${new Date(order.date).toLocaleString('pt-BR')}","${getStatusText(order.status)}","${order.customer.name}","${order.customer.email}","${order.customer.phone}","${order.customer.cpf}","${order.customer.address}","${products}",${order.total}\n`;
+            });
+
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+            link.setAttribute('href', url);
+            link.setAttribute('download', `pedidos_ginga7_${new Date().toISOString().split('T')[0]}.csv`);
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            showNotification('Pedidos exportados com sucesso!', 'success');
+        }
+
+        // Show notification
+        function showNotification(message, type = 'success') {
+            const notification = document.createElement('div');
+            notification.className = 'toast';
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background: ${type === 'success' ? '#27ae60' : type === 'warning' ? '#f39c12' : '#3498db'};
+                color: white;
+                padding: 15px 20px;
+                border-radius: 10px;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+                z-index: 10000;
+                animation: slideIn 0.3s ease;
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+
+        // Auto-refresh every 30 seconds
+        setInterval(() => {
+            loadOrders();
+        }, 30000);
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check authentication first
+            if (!checkAuth()) {
+                return;
+            }
+            
+            loadOrders();
+            
+            // Auto-logout after 30 minutes of inactivity
+            let inactivityTimer;
+            
+            function resetTimer() {
+                clearTimeout(inactivityTimer);
+                inactivityTimer = setTimeout(() => {
+                    logout();
+                }, 30 * 60 * 1000); // 30 minutes
+            }
+
+            // Reset timer on user activity
+            document.addEventListener('mousemove', resetTimer);
+            document.addEventListener('keypress', resetTimer);
+            document.addEventListener('click', resetTimer);
+            document.addEventListener('scroll', resetTimer);
+            
+            // Initial timer
+            resetTimer();
+        });
+
+        // Add CSS animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
